@@ -66,7 +66,7 @@ exit - Exit the application
 ## Examples:
 ### Reverse on http-server
   ```
-$ sudo python3 sheller.py -s 80 -l bash -a 169.254.138.91
+$ sudo python3 c3.py -s 80 -l bash -a 169.254.138.91
 
 Options:
 
