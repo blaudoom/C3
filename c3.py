@@ -67,7 +67,6 @@ def start_server():
     global process
     process = multiprocessing.Process(target=listener, args=(options['httpPort'],))
     process.start()
-    process.join()
 
 
 def print_options():
@@ -137,10 +136,13 @@ print_options()
 process = multiprocessing.Process(target=listener, args=(options['httpPort'],))
 
 
-def restart_server():
+def stop_server():
     if process.is_alive():
         process.kill()
-    process.start()
+        process.terminate()
+        process.join()
+        process.close()
+
 
 #TODO: Better "switch" case
 while running:
@@ -148,21 +150,24 @@ while running:
     words = cmd.split(" ")
 
     if words[0] == 'stop':
-        process.kill()
+        stop_server()
     elif words[0].startswith("set"):
         set_value(words[1], words[2])
     elif words[0] == 'reverse':
         payload = open_shellfile()
         if words[1] == 'serve':
-            process.start()
+            stop_server()
+            start_server()
         elif words[1] == 'print':
             print(payload)
     elif words[0] == 'proxy':
         payload = open_url(words[1])
-        restart_server()
+        stop_server()
+        start_server()
     elif words[0] == 'exec':
         payload = words[1]
-        restart_server()
+        stop_server()
+        start_server()
     elif words[0] == 'presets':
         print_presets()
     elif words[0] == 'options':
