@@ -110,9 +110,10 @@ def open_url(url):
 
     if "://" not in url:
         url = 'https://'+url
-    print("Proxying url: "+url)
+    print("Proxying url: "+url+" Wait while we are caching the file ...")
     with urllib.request.urlopen(url) as f:
         html = f.read()
+        print("File cached!")
         return html
 
 
@@ -125,7 +126,7 @@ parser.add_argument('-l', dest='shell',
 parser.add_argument('-a', dest='localAddr', type=str, help='Address to connect back to')
 parser.add_argument('-p', dest='localPort', help='Port to connect back to', default=4444)
 parser.add_argument('-i', dest="interface", help="Interface name to get ip for reverse shell script")
-parser.add_argument('-s', dest='httpPort', help='Port to start HTTP server in, default 80', default=80)
+parser.add_argument('-s', dest='httpPort', help='Port to start HTTP server in, default 80', default='80')
 
 
 args = parser.parse_args()

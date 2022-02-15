@@ -30,6 +30,8 @@ _/ ___\/  _ \ /     \ /     \__  \  /    \  / __ |
 This is a VERY simple script that can be used to create your basic reverse-shell commands.
 Using a simplified http-server lets us serve files at server root, making calling them more convenient.
 
+Keep in mind. I am not a very fluent Python coder. I do most my work in Java, so any recommendations are welcome. 
+
 Shells from: [PentestMonkey](https://github.com/pentestmonkey)
 
 
